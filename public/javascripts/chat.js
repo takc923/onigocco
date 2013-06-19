@@ -1,5 +1,5 @@
 window.onload = function(){
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect(location.origin);
     socket.on('msg:stream:' + location.pathname, function (data) {
         console.log(data);
         var messageElement = document.createElement("div");
