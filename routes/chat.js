@@ -1,3 +1,3 @@
 exports.index = function(req, res){
-  res.render('index', { title: 'Chat Sample' });
+  res.render('chat', { title: 'Chat Sample' });
 };
