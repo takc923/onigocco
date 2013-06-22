@@ -45,8 +45,17 @@ io.configure(function () {
 });
 
 io.sockets.on('connection', function (socket) {
+    socket.on('init', function (data) {
+        //socket.set('id', data.id);
+        socket.join(data.chatId);
+    });
     socket.on('msg:send', function (data) {
         console.log(data);
-        io.sockets.emit("msg:stream:" + data.id, data);
+        // var id;
+        // socket.get('id', function(err, _id) {
+        //     id = _id;
+        // });
+//        io.sockets.in(data.id).emit("msg:stream", data);
+        io.sockets.in(data.chatId).emit("msg:stream", data);
     });
 });
