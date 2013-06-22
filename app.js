@@ -38,6 +38,7 @@ server.listen(app.get('port'), function(){
 });
 
 var io = require('socket.io').listen(server);
+
 io.configure(function () {
   io.set("transports", ["xhr-polling"]);
   io.set("polling duration", 10);
