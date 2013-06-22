@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/:id([0-9]+)', chat.index);
+app.get('/chat/:id([0-9]+)', chat.index);
 
 var server =  http.createServer(app);
 server.listen(app.get('port'), function(){

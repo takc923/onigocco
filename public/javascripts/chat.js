@@ -1,6 +1,7 @@
+var chatId = location.pathname.match(/[0-9]+$/)[0];
 window.onload = function(){
     var socket = io.connect(location.origin);
-    socket.on('msg:stream:' + location.pathname, function (data) {
+    socket.on('msg:stream:' + chatId, function (data) {
         console.log(data);
         var messageElement = document.createElement("div");
         messageElement.innerHTML = data.message;
@@ -12,7 +13,7 @@ window.onload = function(){
         if(evt.keyCode == 13){
             socket.emit(
                 'msg:send',
-                { message: chatForm.value, id: location.pathname }
+                { message: chatForm.value, id: chatId }
             );
             chatForm.value = "";
         }
